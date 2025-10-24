@@ -1,0 +1,129 @@
+.pokemon-container {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  min-height: 100vh;
+}
+
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 50px;
+  gap: 20px;
+}
+
+.error-container {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+
+.error-card {
+  max-width: 400px;
+  text-align: center;
+}
+
+.pokemon-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+  padding: 20px 0;
+}
+
+.pokemon-card {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border: 2px solid transparent;
+}
+
+.pokemon-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  border-color: #3f51b5;
+}
+
+.pokemon-image {
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
+  margin-bottom: 15px;
+  transition: transform 0.3s ease;
+}
+
+.pokemon-card:hover .pokemon-image {
+  transform: scale(1.1);
+}
+
+.pokemon-name {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #333;
+  text-transform: capitalize;
+}
+
+.pagination-container {
+  display: flex;
+  justify-content: center;
+  padding: 40px 20px;
+}
+
+.pagination-container mat-paginator {
+  background: transparent;
+}
+
+/* Mobile Responsive Design */
+@media (max-width: 768px) {
+  .pokemon-container {
+    padding: 15px;
+  }
+  
+  .pokemon-grid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 15px;
+  }
+  
+  .pokemon-card {
+    padding: 15px;
+  }
+  
+  .pokemon-image {
+    width: 100px;
+    height: 100px;
+  }
+  
+  .pokemon-name {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .pokemon-container {
+    padding: 10px;
+  }
+  
+  .pokemon-grid {
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    gap: 10px;
+  }
+  
+  .pokemon-card {
+    padding: 12px;
+  }
+  
+  .pokemon-image {
+    width: 80px;
+    height: 80px;
+  }
+  
+  .pokemon-name {
+    font-size: 0.9rem;
+  }
+}

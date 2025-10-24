@@ -1,0 +1,22 @@
+<div class="pokemon-container">
+  <!-- Pokemon Grid -->
+  <div *ngIf="pokemonCards().length > 0" class="pokemon-grid">
+    <div *ngFor="let pokemon of pokemonCards()" class="pokemon-card">
+      <img [src]="pokemon.image" [alt]="pokemon.name" class="pokemon-image" loading="lazy" />
+      <h3 class="pokemon-name">{{ capitalizeFirst(pokemon.name) }}</h3>
+    </div>
+  </div>
+
+  <!-- Pagination -->
+  <div *ngIf="pokemonCards().length > 0" class="pagination-container">
+    <mat-paginator
+      [length]="totalCount()"
+      [pageSize]="pageSize"
+      [pageSizeOptions]="pageSizeOptions"
+      [pageIndex]="currentPage()"
+      (page)="onPageChange($event)"
+      showFirstLastButtons
+    >
+    </mat-paginator>
+  </div>
+</div>
