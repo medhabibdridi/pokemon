@@ -21,8 +21,8 @@ export class PokemonListComponent implements OnInit {
   // Pagination properties
   totalCount = signal<number>(0);
   currentPage = signal<number>(0);
-  pageSize = 5;
-  pageSizeOptions = [5, 10, 20, 50, 100];
+  pageSize = 10;
+  pageSizeOptions = [10, 10, 20, 50, 100];
 
   constructor(
     private pokemonService: PokemonService,
