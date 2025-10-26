@@ -58,3 +58,7 @@ This will launch the Angular test runner and execute all unit tests for componen
 - `src/app/services/pokemon.service.ts` — API integration
 - `src/app/models/` — TypeScript interfaces
 - `src/app/utils/` — Contains reusable functions 
+
+## Demo 
+
+https://jumpshare.com/share/GcuJ4RFPCv8jcvrjwwR5
