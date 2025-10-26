@@ -1,0 +1,145 @@
+.pokemon-details-container {
+  padding: 20px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.back-button-container {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  z-index: 10;
+}
+
+.back-button {
+  background-color: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.back-button:hover {
+  background-color: rgba(255, 255, 255, 1);
+}
+
+.pokemon-details-card {
+  position: relative;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  background: white;
+  border: 1px solid #e0e0e0;
+}
+
+.pokemon-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 30px;
+  color: #333;
+  text-align: center;
+  background: #f9f9f9;
+}
+
+.pokemon-image-container {
+  margin-bottom: 20px;
+}
+
+.pokemon-main-image {
+  width: 200px;
+  height: 200px;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.pokemon-main-image:hover {
+  transform: scale(1.05);
+}
+
+.pokemon-info {
+  width: 100%;
+}
+
+.pokemon-name {
+  margin: 0 0 10px 0;
+  font-size: 48px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #333;
+  max-width: 90vw;
+  word-break: break-word;
+  text-align: center;
+  line-height: 1.1;
+  display: block;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+.pokemon-id {
+  margin: 15px 0 25px 0;
+  font-size: 1.4rem;
+  font-weight: 600;
+  background: #e9e9e9;
+  color: #666;
+  padding: 8px 16px;
+  border-radius: 20px;
+  display: inline-block;
+}
+
+.types-container {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+}
+
+.physical-stats {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.stat-card {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  min-width: 200px;
+  border: 1px solid #e0e0e0;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+  color: #333;
+  flex: 1 1 auto;
+  max-width: 250px;
+}
+
+.stat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.stat-icon {
+  font-size: 32px;
+}
+
+.stat-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-label {
+  font-size: 14px;
+  opacity: 0.8;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.stat-value {
+  font-size: 22px;
+  font-weight: 700;
+  margin-top: 2px;
+}

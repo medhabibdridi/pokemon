@@ -1,0 +1,67 @@
+<div class="pokemon-details-container" *ngIf="pokemonDetails() as pokemon">
+  <mat-card class="pokemon-details-card">
+    <div class="back-button-container">
+      <button mat-icon-button (click)="goBack()" class="back-button">
+        <mat-icon>arrow_back</mat-icon>
+      </button>
+    </div>
+
+    <!-- Pokemon Header -->
+    <div class="pokemon-header">
+      <div class="pokemon-image-container">
+        <ng-container *ngIf="showImage(); else notFound">
+          <img
+            [src]="pokemonImageUrl()"
+            [alt]="pokemon.name"
+            class="pokemon-main-image"
+            loading="eager"
+            (error)="showImage.set(false)"
+          />
+        </ng-container>
+        <ng-template #notFound>
+          <div class="pokemon-image-fallback">
+            <mat-icon>image_not_supported</mat-icon>
+          </div>
+        </ng-template>
+      </div>
+
+      <div class="pokemon-info">
+        <h1 class="pokemon-name">{{ capitalize(pokemon.name) }}</h1>
+        <p class="pokemon-id">#{{ pokemon.id.toString().padStart(3, '0') }}</p>
+
+        <!-- Types -->
+        <div class="types-container">
+          <mat-chip
+            *ngFor="let type of pokemon.types"
+            class="type-chip"
+          >
+            {{ capitalize(type.type.name) }}
+          </mat-chip>
+        </div>
+
+        <!-- Physical Stats -->
+        <div class="physical-stats">
+          <div class="stat-card">
+            <div class="stat-icon">
+              <mat-icon>straighten</mat-icon>
+            </div>
+            <div class="stat-info">
+              <span class="stat-label">Height</span>
+              <span class="stat-value">{{ pokemon.height / 10 }} m</span>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon">
+              <mat-icon>fitness_center</mat-icon>
+            </div>
+            <div class="stat-info">
+              <span class="stat-label">Weight</span>
+              <span class="stat-value">{{ pokemon.weight / 10 }} kg</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </mat-card>
+</div>

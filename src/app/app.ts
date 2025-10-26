@@ -10,5 +10,5 @@ import { MatButtonModule } from '@angular/material/button';
   styleUrl: './app.css',
 })
 export class App {
-  protected readonly title = signal('pokemon');
+  protected readonly title = signal('Mohamed habib Dridi - Pokemon App');
 }

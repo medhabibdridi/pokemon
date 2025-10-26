@@ -1,13 +1,15 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { PokemonListResponse } from '../models/pokemon.interface';
+import { shareReplay } from 'rxjs/operators';
+import { PokemonListResponse, PokemonDetails } from '../models/pokemon.interface';
 
 @Injectable({
   providedIn: 'root',
 })
 export class PokemonService {
   private readonly baseUrl = 'https://pokeapi.co/api/v2/pokemon';
+  private cache = new Map<string, Observable<PokemonListResponse>>();
 
   constructor(private http: HttpClient) {}
 
@@ -15,7 +17,25 @@ export class PokemonService {
    * Get a list of Pokemon with pagination
    */
   getPokemonList(limit: number, offset: number): Observable<PokemonListResponse> {
-    return this.http.get<PokemonListResponse>(`${this.baseUrl}?limit=${limit}&offset=${offset}`);
+    const cacheKey = `${limit}-${offset}`;
+
+    if (this.cache.has(cacheKey)) {
+      return this.cache.get(cacheKey)!;
+    }
+
+    const request$ = this.http
+      .get<PokemonListResponse>(`${this.baseUrl}?limit=${limit}&offset=${offset}`)
+      .pipe(shareReplay(1));
+
+    this.cache.set(cacheKey, request$);
+    return request$;
+  }
+
+  /**
+   * Get detailed information about a specific Pokemon
+   */
+  getPokemonDetails(idOrName: string | number): Observable<PokemonDetails> {
+    return this.http.get<PokemonDetails>(`${this.baseUrl}/${idOrName}`);
   }
 
   /**

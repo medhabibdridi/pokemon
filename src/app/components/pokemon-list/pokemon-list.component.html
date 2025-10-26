@@ -1,9 +1,35 @@
 <div class="pokemon-container">
   <!-- Pokemon Grid -->
   <div *ngIf="pokemonCards().length > 0" class="pokemon-grid">
-    <div *ngFor="let pokemon of pokemonCards()" class="pokemon-card">
-      <img [src]="pokemon.image" [alt]="pokemon.name" class="pokemon-image" loading="lazy" />
-      <h3 class="pokemon-name">{{ capitalizeFirst(pokemon.name) }}</h3>
+    <!-- Random Pokemon Card -->
+    <div class="pokemon-card random-pokemon-card" (click)="onRandomPokemonClick()">
+      <div class="random-pokemon-icon">
+        <mat-icon>help_outline</mat-icon>
+      </div>
+      <h3 class="pokemon-name">Random Pokemon</h3>
+    </div>
+
+    <!-- Regular Pokemon Cards -->
+    <div
+      *ngFor="let pokemon of pokemonCards()"
+      class="pokemon-card"
+      (click)="onPokemonClick(pokemon)"
+    >
+      <ng-container *ngIf="showImage()[pokemon.id] !== false; else notFound">
+        <img
+          [src]="pokemon.image"
+          [alt]="pokemon.name"
+          class="pokemon-image"
+          loading="eager"
+          (error)="onImageError(pokemon.id)"
+        />
+      </ng-container>
+      <ng-template #notFound>
+        <div class="pokemon-image-fallback">
+          <mat-icon>image_not_supported</mat-icon>
+        </div>
+      </ng-template>
+      <h3 class="pokemon-name">{{ capitalize(pokemon.name) }}</h3>
     </div>
   </div>
 
@@ -11,7 +37,7 @@
   <div *ngIf="pokemonCards().length > 0" class="pagination-container">
     <mat-paginator
       [length]="totalCount()"
-      [pageSize]="pageSize"
+  [pageSize]="pageSize()"
       [pageSizeOptions]="pageSizeOptions"
       [pageIndex]="currentPage()"
       (page)="onPageChange($event)"

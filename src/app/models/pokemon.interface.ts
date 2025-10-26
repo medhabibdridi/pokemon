@@ -18,3 +18,21 @@ export interface PokemonCard {
   name: string;
   image: string;
 }
+
+// Interface for Pokemon details from API
+export interface PokemonDetails {
+  id: number;
+  name: string;
+  height: number;
+  weight: number;
+  types: PokemonType[];
+}
+
+// Interface for Pokemon type
+export interface PokemonType {
+  slot: number;
+  type: {
+    name: string;
+    url: string;
+  };
+}
