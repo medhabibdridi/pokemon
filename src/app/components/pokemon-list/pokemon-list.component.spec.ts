@@ -1,18 +1,21 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { PokemonListComponent } from './pokemon-list.component';
 import { PokemonService } from '../../services/pokemon.service';
+import { ActivatedRoute } from '@angular/router';
 import { of } from 'rxjs';
 
 const mockPokemonService = {
-  getPokemonList: () => of({
-    count: 4,
-    results: [
-      { name: 'bulbasaur', url: 'https://pokeapi.co/api/v2/pokemon/1/' },
-      { name: 'ivysaur', url: 'https://pokeapi.co/api/v2/pokemon/2/' },
-      { name: 'venusaur', url: 'https://pokeapi.co/api/v2/pokemon/3/' },
-      { name: 'charmander', url: 'https://pokeapi.co/api/v2/pokemon/4/' },
-    ],
-  }),
+  getPokemonList: () =>
+    of({
+      count: 4,
+      results: [
+        { name: 'bulbasaur', url: 'https://pokeapi.co/api/v2/pokemon/1/' },
+        { name: 'ivysaur', url: 'https://pokeapi.co/api/v2/pokemon/2/' },
+        { name: 'venusaur', url: 'https://pokeapi.co/api/v2/pokemon/3/' },
+        { name: 'charmander', url: 'https://pokeapi.co/api/v2/pokemon/4/' },
+      ],
+    }),
+  getOfficialImage: (id: number) => `https://pokeapi.co/api/v2/pokemon/${id}.png`,
 };
 
 describe('PokemonListComponent', () => {
@@ -22,7 +25,10 @@ describe('PokemonListComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [PokemonListComponent],
-      providers: [{ provide: PokemonService, useValue: mockPokemonService }],
+      providers: [
+        { provide: PokemonService, useValue: mockPokemonService },
+        { provide: ActivatedRoute, useValue: { queryParamMap: of({ get: () => null }) } },
+      ],
     }).compileComponents();
     fixture = TestBed.createComponent(PokemonListComponent);
     component = fixture.componentInstance;

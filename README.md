@@ -1,59 +1,60 @@
-# Pokemon
+# Pokémon Angular App
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.3.4.
+This is a minimalist, responsive Angular web app that displays a paginated list of Pokémon with images, details. It uses Angular 20+, Angular Material, and the public [PokeAPI](https://pokeapi.co/).
 
-## Development server
+## Features
 
-To start a local development server, run:
+- Browse Pokémon in a paginated, scrollable grid
+- View detailed info for each Pokémon
+- Responsive, clean Material Design UI
+- Handles missing images and long names gracefully
+- Clickable app title to return to the main list
+- Minimal Unit tests for components and service
+- Lightweight state management with signals 
 
-```bash
-ng serve
-```
+## Getting Started
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+### Prerequisites
 
-## Code scaffolding
+- [Node.js](https://nodejs.org/) (v18 or newer recommended)
+- [npm](https://www.npmjs.com/) (comes with Node.js)
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+### Installation
 
-```bash
-ng generate component component-name
-```
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/medhabibdridi/pokemon.git
+   cd pokemon
+   ```
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+### Running the App
 
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+Start the development server:
 
 ```bash
-ng test
+npm start
 ```
 
-## Running end-to-end tests
+Then open [http://localhost:4200/](http://localhost:4200/) in your browser.
 
-For end-to-end (e2e) testing, run:
+### Running Tests
+
+To run unit tests:
 
 ```bash
-ng e2e
+npm test
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+This will launch the Angular test runner and execute all unit tests for components and services.
 
-## Additional Resources
+## Project Structure
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+- `src/app/components/pokemon-list/` — Main Pokémon list/grid
+- `src/app/components/pokemon-details/` — Pokémon details page
+- `src/app/services/pokemon.service.ts` — API integration
+- `src/app/models/` — TypeScript interfaces
+- `src/app/utils/` — Contains reusable functions 
